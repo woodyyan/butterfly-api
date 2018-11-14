@@ -34,7 +34,7 @@ public class SwaggerConfiguration {
     @Value(value = "${swagger.include.patterns}")
     private String includePatterns;
 
-    @Value(value = "${info.app.base.url:http://}")
+    @Value(value = "${info.app.base.urls:http://}")
     private String protocol;
 
     @Bean

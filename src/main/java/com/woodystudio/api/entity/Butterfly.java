@@ -24,7 +24,7 @@ public class Butterfly {
     @Column(name = "set_id")
     private int setId;
 
-    @Column(name = "url")
+    @Column(name = "urls")
     private String url;
 
     @Column(name = "updated_time", nullable = false)
