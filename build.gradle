@@ -40,7 +40,7 @@ jar {
     version = apiVersion
     manifest {
         attributes "Manifest-Version": apiVersion,
-                'Main-Class': 'com.easystudio.api.zuoci.ZuociApplication'
+                'Main-Class': 'com.woodystudio.api.ButterflyApplication'
     }
 }
 

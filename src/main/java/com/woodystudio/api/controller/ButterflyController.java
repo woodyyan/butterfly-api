@@ -36,7 +36,7 @@ public class ButterflyController {
             @ApiImplicitParam(name = "size", value = "The number of elements per page",
                     defaultValue = "10", dataType = "integer", paramType = "query")
     })
-    public Butterflies searchButterfly(@PageableDefault(value = 0, size = 10, sort = "createdTime", direction = Sort.Direction.DESC)
+    public Butterflies searchButterfly(@PageableDefault(sort = "createdTime", direction = Sort.Direction.DESC)
                                                Pageable page) {
         //一行显示9张图片，所以一次拿10行的
         log.info("Start search butterfly for page = {}", page);
