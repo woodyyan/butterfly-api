@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -23,6 +24,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @Slf4j
 public class ButterflyController {
 
+    @Autowired
     private ButterflyService service;
 
     @RequestMapping(method = GET)
@@ -32,10 +34,11 @@ public class ButterflyController {
             @ApiImplicitParam(name = "page", value = "The index of the page requested",
                     defaultValue = "0", dataType = "integer", paramType = "query"),
             @ApiImplicitParam(name = "size", value = "The number of elements per page",
-                    defaultValue = "20", dataType = "integer", paramType = "query")
+                    defaultValue = "90", dataType = "integer", paramType = "query")
     })
-    public Butterflies searchButterfly(@PageableDefault(value = 0, size = 20, sort = "createdTime", direction = Sort.Direction.DESC)
+    public Butterflies searchButterfly(@PageableDefault(value = 0, size = 90, sort = "createdTime", direction = Sort.Direction.DESC)
                                                Pageable page) {
+        //一行显示9张图片，所以一次拿10行的
         log.info("Start search butterfly for page = {}", page);
         Butterflies butterflies = service.searchButterfly(page);
         log.info("End search butterfly with butterflies: {}", butterflies);

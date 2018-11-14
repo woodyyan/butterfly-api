@@ -1,3 +1,6 @@
 .gradle/
 out/
 .idea/
+src/main/resources/
+build/
+*.properties

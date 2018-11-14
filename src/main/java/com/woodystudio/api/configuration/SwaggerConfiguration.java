@@ -34,7 +34,7 @@ public class SwaggerConfiguration {
     @Value(value = "${swagger.include.patterns}")
     private String includePatterns;
 
-    @Value(value = "${info.app.base.url:https://}")
+    @Value(value = "${info.app.base.url:http://}")
     private String protocol;
 
     @Bean
@@ -45,11 +45,11 @@ public class SwaggerConfiguration {
     @Bean
     public Docket createDocket() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("Zuoci v1")
+                .groupName("Butterfly v1")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.easystudio.api.zuoci"))
+                .apis(RequestHandlerSelectors.basePackage("com.woodystudio.api"))
                 .build()
-                .globalOperationParameters(setHeaderToken())
+//                .globalOperationParameters(setHeaderToken())
                 .apiInfo(apiInfo())
                 .protocols(extractProtocol());
     }
@@ -62,15 +62,15 @@ public class SwaggerConfiguration {
         return new ApiInfo(name, description, version, "", new Contact("", "", email), "", "", Collections.emptyList());
     }
 
-    private List<Parameter> setHeaderToken() {
-        ParameterBuilder tokenPar = new ParameterBuilder();
-        List<Parameter> pars = new ArrayList<>();
-        tokenPar.name("Authorization")
-                .description("token")
-                .modelRef(new ModelRef("string"))
-                .parameterType("header")
-                .required(false).build();
-        pars.add(tokenPar.build());
-        return pars;
-    }
+//    private List<Parameter> setHeaderToken() {
+//        ParameterBuilder tokenPar = new ParameterBuilder();
+//        List<Parameter> pars = new ArrayList<>();
+//        tokenPar.name("Authorization")
+//                .description("token")
+//                .modelRef(new ModelRef("string"))
+//                .parameterType("header")
+//                .required(false).build();
+//        pars.add(tokenPar.build());
+//        return pars;
+//    }
 }
