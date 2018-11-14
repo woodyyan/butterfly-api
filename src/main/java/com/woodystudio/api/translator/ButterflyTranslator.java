@@ -23,10 +23,11 @@ public class ButterflyTranslator {
             butterflies.getData().add(data);
         });
 
+        int total = butterflies.getData().size();
         butterflies.getMeta().setPageSize(pagedButterflies.getSize());
         butterflies.getMeta().setPageNumber(pagedButterflies.getNumber());
-        butterflies.getMeta().setTotalPages(pagedButterflies.getTotalPages());
-        butterflies.getMeta().setTotalElements(pagedButterflies.getTotalElements());
+        butterflies.getMeta().setTotalPages(total / pagedButterflies.getSize() + 1);
+        butterflies.getMeta().setTotalElements(butterflies.getData().size());
         return butterflies;
     }
 
