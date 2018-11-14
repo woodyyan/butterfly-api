@@ -49,7 +49,7 @@ checkstyle {
 }
 
 project.version = apiVersion
-project.group = 'com.woodystudio.butterfly'
+project.group = 'com.woodystudio.api'
 
 dependencies {
     compile 'joda-time:joda-time:2.9.9'
@@ -76,5 +76,5 @@ dependencies {
 }
 
 springBoot {
-    mainClass = "com.woodystudio.api.butterfly.ButterflyApplication"
+    mainClass = "com.woodystudio.api.ButterflyApplication"
 }
