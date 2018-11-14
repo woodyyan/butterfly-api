@@ -1,0 +1,80 @@
+version 'unspecified'
+
+buildscript {
+    ext {
+        springBootVersion = '1.5.9.RELEASE'
+    }
+
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+//		jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext['hibernate.version'] = '5.2.12.Final'
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'application'
+apply plugin: 'checkstyle'
+apply plugin: 'java'
+
+group 'com.woodystudio.api'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+ext {
+    apiVersion = '1.0.0'
+}
+
+jar {
+    baseName = 'butterfly-api'
+    version = apiVersion
+    manifest {
+        attributes "Manifest-Version": apiVersion,
+                'Main-Class': 'com.easystudio.api.zuoci.ZuociApplication'
+    }
+}
+
+checkstyle {
+    toolVersion = '7.8.2'
+}
+
+project.version = apiVersion
+project.group = 'com.woodystudio.butterfly'
+
+dependencies {
+    compile 'joda-time:joda-time:2.9.9'
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.springframework.boot:spring-boot-starter-data-rest")
+    compile("org.springframework.boot:spring-boot-starter")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile("org.springframework.boot:spring-boot-starter-security")
+    compile group: 'org.jadira.usertype', name: 'usertype.core', version: '6.0.1.GA'
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.10.0'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.10.0'
+    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-joda', version: '2.9.4'
+    compile 'com.fasterxml.jackson.core:jackson-databind'
+    compile 'com.fasterxml.jackson.core:jackson-annotations'
+    compileOnly 'org.projectlombok:lombok:1.18.2'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.easymock:easymock:3.5.1')
+    testRuntime 'org.slf4j:slf4j-api:1.7.25'
+}
+
+springBoot {
+    mainClass = "com.woodystudio.api.butterfly.ButterflyApplication"
+}
